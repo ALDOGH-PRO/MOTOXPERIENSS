@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BikerT - Catálogo</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #f4f4f4; }
+    header { background: #111; color: #fff; padding: 15px; text-align: center; position: sticky; top: 0; }
+    h1 { margin: 0; }
+
+    .btn-volver {
+      display: inline-block;
+      background: #ffc107;
+      color: #111;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      margin-top: 10px;
+    }
+    .btn-volver:hover { background: #ffda44; }
+
+    .contenedor { max-width: 1000px; margin: 20px auto; padding: 10px; }
+    .catalogo { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
+
+    .tarjeta { 
+      background: #fff; 
+      border-radius: 10px; 
+      overflow: hidden; 
+      box-shadow: 0 0 8px rgba(0,0,0,0.1); 
+      transition: transform 0.2s; 
+      padding-bottom: 15px;
+    }
+    .tarjeta:hover { transform: scale(1.03); }
+
+    /* FIX DE LA IMAGEN CENTRADA Y MÁS PEQUEÑA */
+    .tarjeta img { 
+      width: 80%; 
+      height: 180px; 
+      object-fit: cover; 
+      display: block; 
+      margin: 0 auto; 
+      border-radius: 10px;
+    }
+
+    .info { padding: 10px; text-align: center; }
+    .info h3 { margin: 5px 0; color: #222; }
+    .info p { margin: 5px 0; color: #555; }
+
+    footer { text-align: center; background: #111; color: #fff; padding: 10px; margin-top: 30px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🏍️ MOTO_XPERIENS</h1>
+    <a href="index.html" class="btn-volver">⬅ Volver al inicio</a>
+  </header>
+
+  <div class="contenedor">
+    <div class="catalogo">
+
+      <!-- ÚNICA MARCA (Yamaha) -->
+      <a href="yamaha.html" class="tarjeta-link">
+        <div class="tarjeta">
+          <img src="yamahaR6.jpg" alt="Yamaha">
+          <div class="info">
+            <h3>Yamaha</h3>
+            <p>REVOLUCIONA TU CORAZÓN</p>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>BikerT © 2025 — Aldo, Xitlaly y Nati</p>
+  </footer>
+
+</body>
+</html>

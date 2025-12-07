@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Carrito de Compras</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      background: #f4f4f4; 
+      margin: 0; 
+      padding: 20px; 
+    }
+    h1 { text-align: center; }
+    .carrito { 
+      max-width: 700px; 
+      margin: 0 auto; 
+      background: white; 
+      padding: 20px; 
+      border-radius: 8px; 
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .item { 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between; 
+      margin-bottom: 10px; 
+      border-bottom: 1px solid #ddd; 
+      padding: 10px 0; 
+    }
+    .item img { 
+      width: 80px; 
+      height: 60px; 
+      object-fit: cover; 
+      border-radius: 5px; 
+    }
+    .item-info { flex: 1; margin-left: 10px; }
+    .total { 
+      font-weight: bold; 
+      text-align: right; 
+      margin-top: 20px; 
+    }
+    button { 
+      background: #facc15; 
+      border: none; 
+      padding: 10px 16px; 
+      border-radius: 5px; 
+      cursor: pointer; 
+      font-weight: bold;
+    }
+    button:hover { background: #fde047; }
+    .acciones {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+    .btn-eliminar {
+      background: #ef4444;
+      color: white;
+    }
+    .btn-eliminar:hover {
+      background: #dc2626;
+    }
+    .btn-comprar {
+      background: #16a34a;
+      color: white;
+    }
+    .btn-comprar:hover {
+      background: #22c55e;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🛒 Tu Carrito</h1>
+  <div class="carrito" id="carrito"></div>
+  <div class="total" id="total"></div>
+
+  <div class="acciones">
+    <button class="btn-eliminar" id="vaciarCarrito">Vaciar carrito</button>
+    <button class="btn-comprar" id="comprarBtn">Comprar</button>
+  </div>
+
+  <script>
+    const carritoContainer = document.getElementById("carrito");
+    const totalEl = document.getElementById("total");
+    const vaciarBtn = document.getElementById("vaciarCarrito");
+    const comprarBtn = document.getElementById("comprarBtn");
+
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+    function mostrarCarrito() {
+      carritoContainer.innerHTML = "";
+      if (carrito.length === 0) {
+        carritoContainer.innerHTML = "<p>No hay productos en el carrito.</p>";
+        totalEl.textContent = "";
+        return;
+      }
+
+      let total = 0;
+
+      carrito.forEach(item => {
+        total += item.precio * item.cantidad;
+
+        carritoContainer.innerHTML += `
+          <div class="item">
+            <img src="${item.img}" alt="${item.nombre}">
+            <div class="item-info">
+              <h3>${item.nombre}</h3>
+              <p>Cantidad: ${item.cantidad}</p>
+              <p>Precio: $${item.precio.toLocaleString()} MXN</p>
+            </div>
+          </div>
+        `;
+      });
+
+      totalEl.textContent = "Total: $" + total.toLocaleString() + " MXN";
+    }
+
+    // Mostrar carrito al cargar
+    mostrarCarrito();
+
+    // Vaciar carrito
+    vaciarBtn.addEventListener("click", () => {
+      if (confirm("¿Seguro que quieres vaciar el carrito?")) {
+        localStorage.removeItem("carrito");
+        carrito = [];
+        mostrarCarrito();
+      }
+    });
+
+    // Comprar (validación pendiente)
+    comprarBtn.addEventListener("click", () => {
+      if (carrito.length === 0) {
+        alert("Tu carrito está vacío 🛒");
+        return;
+      }
+
+      
+      alert("Función de compra aún no implementada ⚙️");
+    });
+  </script>
+
+</body>
+</html>

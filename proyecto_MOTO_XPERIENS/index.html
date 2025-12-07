@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MotoXperience Store</title>
+  <style>
+    * { box-sizing: border-box; font-family: 'Segoe UI', Roboto, Arial, sans-serif; }
+    body { margin: 0; background: #f4f4f6; color: #111; }
+    a { color: inherit; text-decoration: none; }
+
+    header { background: linear-gradient(90deg,#0b1220,#1b2a44); color: #fff; padding: 14px 20px; position: sticky; top: 0; z-index: 50; }
+    .nav { display:flex; align-items:center; justify-content:space-between; gap:12px; max-width:1200px; margin:0 auto; }
+    .brand { font-weight:700; letter-spacing:1px; font-size:1.1rem; }
+    nav ul { display:flex; gap:12px; list-style:none; margin:0; padding:0; align-items:center; }
+    nav li { padding:6px 10px; border-radius:8px; }
+    nav li:hover { background: rgba(255,255,255,0.06); }
+    .btn-nav { background: #ffc107; color: #111; padding:6px 10px; border-radius:8px; font-weight:600; }
+
+    .container { max-width:1200px; margin:20px auto; padding:0 16px; }
+
+    .carousel { position:relative; width:100%; height:360px; border-radius:12px; overflow:hidden; background:#222; display:flex; align-items:center; justify-content:center; }
+    .slides { display:flex; transition:transform 0.6s ease; height:100%; width:100%; }
+    .slide { min-width:100%; height:100%; display:flex; align-items:center; justify-content:center; position:relative; color:#fff; }
+    .slide img { width:100%; height:100%; object-fit:cover; display:block; filter:brightness(0.6); }
+    .carousel-caption { position:absolute; left:24px; bottom:24px; z-index:5; }
+    .carousel-caption h2 { margin:0 0 6px 0; font-size:1.8rem; }
+    .carousel-caption p { margin:0; opacity:0.95; }
+
+    .carousel-controls { position:absolute; top:50%; transform:translateY(-50%); width:100%; display:flex; justify-content:space-between; padding:0 8px; z-index:10; pointer-events:none; }
+    .control { pointer-events:auto; background:rgba(0,0,0,0.35); border:none; color:#fff; padding:8px 12px; border-radius:8px; cursor:pointer; }
+    .dots { display:flex; gap:8px; position:absolute; bottom:12px; left:50%; transform:translateX(-50%); z-index:12; }
+    .dot { width:10px; height:10px; background:rgba(255,255,255,0.5); border-radius:50%; cursor:pointer; }
+    .dot.active { background:#ffc107; }
+
+    .toolbar { display:flex; gap:12px; align-items:center; justify-content:space-between; margin:16px 0; flex-wrap:wrap; }
+    .filters { display:flex; gap:8px; align-items:center; }
+    select, input[type="text"] { padding:8px 10px; border-radius:8px; border:1px solid #d0d0d5; }
+
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; }
+    .card { background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 6px 18px rgba(11,17,34,0.06); display:flex; flex-direction:column; }
+    .card .thumb { width:100%; height:170px; background:#ddd; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+    .card .thumb img { width:100%; height:100%; object-fit:cover; display:block; }
+    .card .body { padding:12px 14px; flex:1; display:flex; flex-direction:column; }
+    .title { font-weight:700; margin-bottom:6px; }
+    .price { font-size:1.1rem; font-weight:800; margin-bottom:8px; color:#0b1220; }
+    .specs { font-size:0.9rem; color:#444; margin-bottom:12px; }
+    .card .actions { display:flex; gap:8px; align-items:center; margin-top:auto; }
+    .btn { padding:8px 12px; border-radius:8px; border:none; cursor:pointer; font-weight:700; }
+    .btn-primary { background:#111827; color:#fff; }
+    .btn-outline { background:transparent; border:1px solid #d0d0d5; }
+
+    footer { margin-top:26px; background:#0b1220; color:#dfe7ff; padding:18px; border-top:4px solid #ffc107; }
+    .footer-inner { max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; gap:16px; align-items:center; flex-wrap:wrap; padding:0 16px; }
+    .small { font-size:0.9rem; opacity:0.9; }
+
+    @media (max-width:600px) {
+      .carousel { height:220px; }
+      .carousel-caption h2 { font-size:1.2rem; }
+    }
+</style>
+</head>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MotoXperience Store</title>
+
+  <style>
+    
+    .card .thumb {
+      width: 100%;
+      height: 250px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f7f7f7;
+      overflow: hidden;
+    }
+
+    .card .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; 
+    }
+
+    .card {
+      max-width: 420px;
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    }
+
+    .card .body {
+      padding: 15px;
+    }
+  </style>
+</head>
+
+
+
+<body>
+
+  <header>
+  <div class="nav container">
+    <div class="brand">MotoXperience Store</div>
+    <nav>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a class="btn-nav" href="catalogo.html">Catálogo</a></li>
+        <li><a class="btn-nav" href="carrito.html">🛒</a></li>
+        <li><a class="btn-nav" href="registro.html">Registrarse</a></li>
+        <li><a class="btn-nav" href="iniciosesion.html">Iniciar sesión</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+  <main class="container" id="inicio">
+
+    <section class="carousel" aria-label="Carrusel de motos">
+      <div class="slides" id="slides">
+        <div class="slide">
+          <img src="yamahaR1.jpg" alt="	Yamaha R1" width="500">
+          <div class="carousel-caption">
+            <h2>SUPER SPORTS 1000cc</h2>
+            <p>Potencia y diseño para los que buscan adrenalina.</p>
+          </div>
+        </div>
+        <div class="slide">
+          <img src="super-tenere-1200ze.jpg" alt="Touring 1200" width="500">
+          <div class="carousel-caption">
+            <h2>Touring 1200</h2>
+            <p>Comodidad en largas rutas con motor de alta cilindrada.</p>
+          </div>
+        </div>
+        <div class="slide">
+          <img src="yamahaMT09.jpg" alt="Naked 900" width="800">
+
+          <div class="carousel-caption">
+            <h2>Naked 900X</h2>
+            <p>Estilo urbano y rendimiento en cada semáforo.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-controls">
+        <button class="control" id="prev">◀</button>
+        <button class="control" id="next">▶</button>
+      </div>
+
+      <div class="dots" id="dots"></div>
+    </section>
+
+    <div class="toolbar">
+      <div class="filters">
+        <label for="filtro">Cilindraje:</label>
+        <select id="filtro">
+          <option value="all">Todas</option>
+          <option value="1000plus">1000cc+</option>
+          <option value="750-999">750 - 999cc</option>
+          <option value="500-749">500 - 749cc</option>
+        </select>
+
+        <label for="buscar" style="margin-left:8px;">Buscar:</label>
+        <input type="text" id="buscar" placeholder="Marca, modelo..." />
+      </div>
+      <div style="font-size:0.95rem; color:#555;">
+        Mostrando <span id="count">0</span> motos
+      </div>
+    </div>
+<section id="motos">
+  <div class="grid" id="catalog">
+    <!-- MOTO 1 -->
+<article class="card" data-nombre="Yamaha R1" data-precio="349900" data-img="yamahaR1.jpg">
+  <div class="thumb"><img src="yamahaR1.jpg" alt="Moto 1 - SUPER SPORTS 1000cc"></div>
+  <div class="body">
+    <div class="title">Yamaha R1</div>
+    <div class="price">$ 349,900 MXN</div>
+    <div class="specs">Motor: 1000cc • Potencia 200HP • Frenos ABS • Peso 198kg</div>
+    <div class="actions">
+    <a href="yamahaMT09.html" class="btn btn-primary">Ver detalle</a>
+      <button class="btn btn-outline btn-carrito">Agregar al carrito</button>
+    </div>
+  </div>
+</article>
+
+<!-- MOTO 2 -->
+<article class="card" data-nombre="Yamaha MT-09" data-precio="30499900" data-img="img/naked100.jpg">
+  <div class="thumb"><img src="yamahaMT09.jpg" alt="Moto 2 - Naked 900 Street"></div>
+  <div class="body">
+    <div class="title">Yamaha MT-09</div>
+    <div class="price">$304,999.00  MXN</div>
+    <div class="specs">Motor: 900cc • Potencia 140HP • Peso 185kg</div>
+    <div class="actions">
+      <a href="yamahaMT09.html" class="btn btn-primary">Ver detalle</a>
+      <button class="btn btn-outline btn-carrito">Agregar al carrito</button>
+    </div>
+  </div>
+</article>
+
+<!-- MOTO 3 -->
+<article class="card" data-nombre="Super Tenere 1200" data-precio="41999900" data-img="img/touring1400.jpg">
+  <div class="thumb"><img src="yamaha-super-tenere1200.jpg" alt="Moto 3 - Adventure 650X"></div>
+  <div class="body">
+    <div class="title">Super Tenere 1200</div>
+    <div class="price">$ 419,999.00 MXN</div>
+    <div class="specs">Motor: 1200cc • Potencia 85HP • Peso 190kg</div>
+    <div class="actions">
+    <a href="yamaha-super-tenere1200.html" class="btn btn-primary">Ver detalle</a>
+            <button class="btn btn-outline btn-carrito">Agregar al carrito</button>
+    </div>
+  </div>
+</article>
+  </div>
+</section>
+    <section id="contacto" style="margin-top:18px;">
+  <div style="background:#fff; padding:12px; border-radius:10px; text-align:center;">
+    <h3 style="margin:0 0 8px 0;">Contacto</h3>
+    <p style="margin:0 0 6px 0;">Correo: ventas@motoxperience.local — Tel: 762-205-85-57</p>
+    <p style="margin:0;">Dirección: Taxco Gro — Horario: Lun-Vie 10:00 - 19:00</p>
+    <br>
+    <a href="contacto.html" style="background:#000; color:#fff; padding:10px 20px; border-radius:6px; text-decoration:none;">Ir a página de contacto</a>
+  </div>
+</section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div><strong>MotoXperience Store</strong></div>
+      <div class="small">Hecho por Aldo, Xitlaly y Nati</div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const slides = document.getElementById('slides');
+      const slideCount = slides.children.length;
+      const dotsContainer = document.getElementById('dots');
+      let idx = 0;
+
+      for (let i=0;i<slideCount;i++){
+        const d = document.createElement('div');
+        d.className = 'dot' + (i===0 ? ' active' : '');
+        d.dataset.i = i;
+        d.addEventListener('click', ()=> goTo(i));
+        dotsContainer.appendChild(d);
+      }
+
+      function update(){
+        slides.style.transform = 'translateX(' + (-idx * 100) + '%)';
+        document.querySelectorAll('.dot').forEach((el)=> el.classList.toggle('active', +el.dataset.i === idx));
+      }
+
+      function goTo(i){
+        idx = (i + slideCount) % slideCount;
+        update();
+      }
+
+      document.getElementById('prev').addEventListener('click', ()=> goTo(idx-1));
+      document.getElementById('next').addEventListener('click', ()=> goTo(idx+1));
+
+      let autoplay = setInterval(()=> goTo(idx+1), 5000);
+      const carousel = document.querySelector('.carousel');
+      carousel.addEventListener('mouseover', ()=> clearInterval(autoplay));
+      carousel.addEventListener('mouseleave', ()=> autoplay = setInterval(()=> goTo(idx+1), 5000));
+    })();
+
+    (function(){
+      const filtro = document.getElementById('filtro');
+      const buscar = document.getElementById('buscar');
+      const catalog = document.getElementById('catalog');
+      const countEl = document.getElementById('count');
+
+      function applyFilters(){
+        const q = buscar.value.trim().toLowerCase();
+        const filtroVal = filtro.value;
+        const cards = Array.from(catalog.children);
+        let shown = 0;
+
+        cards.forEach(card=>{
+          const cc = parseInt(card.dataset.cc || '0', 10);
+          const title = (card.querySelector('.title')?.textContent || '').toLowerCase();
+          const specs = (card.querySelector('.specs')?.textContent || '').toLowerCase();
+          let okCil = false;
+
+          if (filtroVal === 'all') okCil = true;
+          else if (filtroVal === '1000plus' && cc >= 1000) okCil = true;
+          else if (filtroVal === '750-999' && cc >= 750 && cc <= 999) okCil = true;
+          else if (filtroVal === '500-749' && cc >= 500 && cc <= 749) okCil = true;
+
+          let okQ = !q || title.includes(q) || specs.includes(q);
+
+          if (okCil && okQ) {
+            card.style.display = '';
+            shown++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        countEl.textContent = shown;
+      }
+
+      filtro.addEventListener('change', applyFilters);
+      buscar.addEventListener('input', applyFilters);
+      applyFilters();
+    })();
+  </script>
+<script src="js/tienda.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Yamaha - Modelos Dobre Proposito</title>
+  <style>
+    body {
+      background: #0f172a;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 30px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #0033A0;
+      margin-bottom: 30px;
+    }
+
+    .contenedor {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .tarjeta-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      width: 300px;
+    }
+
+    .tarjeta {
+      background: #1e293b;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: 0.3s;
+      position: relative; /* NECESARIO para el cuadrito */
+    }
+
+    .tarjeta:hover {
+      transform: scale(1.05);
+      background: #0033A0;
+      color: black;
+    }
+
+    .tarjeta img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: 0.3s; /* Para oscurecer */
+    }
+
+    /* 🔵 Oscurecer imagen con hover */
+    .tarjeta:hover img {
+      filter: brightness(40%);
+    }
+
+    /* 🔵 Cuadro "Ver más" */
+    .overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 10px 20px;
+      border: 2px solid white;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      opacity: 0;
+      transition: 0.3s ease-in-out;
+    }
+
+    /* Mostrar texto */
+    .tarjeta:hover .overlay {
+      opacity: 1;
+    }
+
+    .info {
+      padding: 15px;
+      text-align: center;
+    }
+
+    /* 🔵 BOTÓN EN AZUL YAMAHA */
+    a.volver {
+      display: inline-block;
+      background: #0033A0; /* Azul Yamaha */
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      margin-bottom: 30px;
+    }
+
+    a.volver:hover {
+      background: #0A5CD9; /* Azul más claro */
+    }
+  </style>
+</head>
+<body>
+
+  <a href="yamaha.html" class="volver">← Volver a los segmentos Yamaha</a>
+  <h1>Modelos Doble Proposito(500cc </h1>
+
+  <div class="contenedor">
+    <!-- modelo 1 -->
+    <a href="yamahaTénéré700.html" class="tarjeta-link">
+      <div class="tarjeta">
+        <img src="Tenere-yamaha.jpg" alt="Yamaha Ténéré 700">
+
+        <!-- 🔵 CUADRO VER MÁS -->
+        <div class="overlay">Ver más</div>
+
+        <div class="info">
+          <h3> Yamaha Ténéré 700</h3>
+          <p>“Tu aventura, tu camino, sin límites.”</p>
+        </div>
+      </div>
+    </a>
+
+    <!-- modelo 2  -->
+    <a href="yamaha-super-tenere1200.html" class="tarjeta-link">
+      <div class="tarjeta">
+        <img src="super-tenere-yamaha.jpg" alt="Super Teneré 1200ZE">
+
+        <!-- 🔵 CUADRO VER MÁS -->
+        <div class="overlay">Ver más</div>
+
+        <div class="info">
+          <h3>Super Teneré 1200ZE</h3>
+          <p>“Viaja más lejos, conquista cualquier terreno.”</p>
+        </div>
+      </div>
+    </a>
+
+    
+</body>
+</html>
